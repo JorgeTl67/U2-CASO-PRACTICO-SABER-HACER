@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="diseño3A.css">
+    <title>Lista de Alumnos</title>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, Timestamp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+    
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyA7cvp7yThFHYCRYPNyeSIUt5mKsQ5RIo8",
+            authDomain: "paselistarfid.firebaseapp.com",
+            projectId: "paselistarfid",
+            storageBucket: "paselistarfid.appspot.com",
+            messagingSenderId: "90651000574",
+            appId: "1:90651000574:web:d690f95a7d53a046b86faf",
+            measurementId: "G-J5VFKV1PGH"
+        };
+    
+        //  Inicializar Firebase y Firestore
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const nombres = ["Carlos", "Ana", "Luis", "Sofía", "Fernando", "Elena", "Pedro", "María", "Jorge", "Laura"];
+        const apellidos = ["García", "Martínez", "Rodríguez", "López", "Hernández", "Díaz", "Pérez", "Gómez", "Sánchez", "Romero"];
+
+   
+        function generarNombreAleatorio() {
+            const nombre = nombres[Math.floor(Math.random() * nombres.length)];
+            const apellido = apellidos[Math.floor(Math.random() * apellidos.length)];
+            return { nombre, apellido };
+        }
+
+       
+        function generarMatriculaAleatoria() {
+            return Math.floor(100000 + Math.random() * 900000);
+        }
+
+        // Función para registrar un alumno en Firestore
+        async function registrarAlumno(nombre, apellido, matricula) {
+            if (!nombre || !apellido || !matricula) {
+                alert("Faltan datos del alumno.");
+                return;
+            }
+
+            try {
+                await addDoc(collection(db, "Alumnos"), {
+                    Apellido: apellido,
+                    Nombre: nombre,
+                    Matricula: matricula,
+                    HoraEntrada: Timestamp.now()
+                });
+                console.log(`✅ Alumno registrado: ${nombre} ${apellido} - Matrícula: ${matricula}`);
+            } catch (error) {
+                console.error("❌ Error al registrar:", error);
+            }
+        }
+        
+    
+        
+        function cargarAlumnos() {
+            const tabla = document.querySelector("#attendance-table tbody");
+
+            onSnapshot(collection(db, "Alumnos"), (snapshot) => {
+                tabla.innerHTML = ""; 
+
+                snapshot.forEach((doc) => {
+                    const alumno = doc.data();
+                    const horaEntrada = alumno.HoraEntrada
+                        ? new Date(alumno.HoraEntrada.toDate()).toLocaleTimeString('es-ES')
+                        : "Sin registro";
+
+                    const row = `<tr>
+                        <td>${alumno.Apellido}</td>
+                        <td>${alumno.Nombre}</td>
+                        <td>${alumno.Matricula}</td>
+                        <td>${horaEntrada}</td>
+                    </tr>`;
+                    tabla.innerHTML += row;
+                });
+            });
+        }
+
+        // Filtrar alumnos en tiempo real
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchInput = document.getElementById("search-input");
+            searchInput.addEventListener("input", function() {
+                const filter = searchInput.value.toLowerCase();
+                const rows = document.querySelectorAll("#attendance-table tbody tr");
+
+                rows.forEach(row => {
+                    const text = row.innerText.toLowerCase();
+                    row.style.display = text.includes(filter) ? "" : "none";
+                });
+            });
+
+            cargarAlumnos();
+        });
+
+        
+        document.getElementById("registrar-alumno").addEventListener("click", () => {
+            const { nombre, apellido } = generarNombreAleatorio();
+            const matricula = generarMatriculaAleatoria();
+
+            registrarAlumno(nombre, apellido, matricula);
+        });
+    </script>
+    
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="Interfaz.html">Inicio</a></li>
+            <li><a href="Login.html">Cerrar sesión</a></li>
+        </ul>
+        <div class="date" id="current-date"></div>
+    </nav>
+
+    <div class="container">
+        <h2>Lista de Alumnos que han pasado</h2>
+
+        
+        <input type="text" id="search-input" placeholder="Buscar alumno..." />
+
+      
+        <div class="list" style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 5px;">
+            <table id="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Matrícula</th>
+                        <th>Hora de Entrada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+            </table>
+        </div>
+
+       
+        <button id="registrar-alumno">Agregar Alumno </button>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sistema RFID. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

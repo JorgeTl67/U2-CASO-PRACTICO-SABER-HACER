@@ -1,0 +1,169 @@
+
+html {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://mexicoindustry.com/admin/images/notas/2020/12/refuerzan-alumnos-de-utc-su-experiencia-laboral-y-academica-4969.jpg');
+    background-position: center;
+    background-size: cover;
+}
+body1 {
+    font-family: Arial, sans-serif;
+    color: #333; 
+    line-height: 1.6;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+.form-wrapper h2 {
+    font-size: 36px;
+    color: #4CAF50; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    color: #333;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #999;
+    font-size: 16px;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    color: #4CAF50;
+    font-size: 12px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #4CAF50; 
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#resultado {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    display: none;
+}
+
+form a {
+ 
+    text-decoration: none;
+    font-weight: bold;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 50px; 
+    max-width: 550px; 
+    margin: 0 auto;
+}
+
+.card-title {
+    font-size: 36px;
+    color: #4CAF50; /* Verde */
+    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.boton1 {
+    display:grid;
+    place-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50; 
+    border: none;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 20.5%;
+    text-align: center;
+}
+
+.boton1:hover {
+    background-color: #45a049; 
+    color: #fff;
+}
+
+.boton2 {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #4CAF50; 
+    background-color: #fff;
+    border: 2px solid #4CAF50;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    width: 20%;
+    ;
+}
+
+.boton2:hover {
+    background-color: #4CAF50; 
+    color: #fff;
+}
+
+.botones-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.boton1, .boton2 {
+    text-align: center;
+    width: 155px;
+    
+    margin: auto;
+}
+

@@ -1,0 +1,105 @@
+html {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://mexicoindustry.com/admin/images/notas/2020/12/refuerzan-alumnos-de-utc-su-experiencia-laboral-y-academica-4969.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+body {
+    font-family: Arial, sans-serif; 
+    color: #333;
+    line-height: 1.6;
+    height: 100vh;
+    margin: auto;
+    
+}
+
+
+.container {
+    padding: 50px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 50px; 
+    max-width: 550px; 
+    margin: 0 auto;
+}
+
+
+.card-title {
+    font-size: 36px;
+    color: #4CAF50; /* Verde */
+    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-control {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd; /* Gris claro */
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px;
+    margin-bottom: 15px;
+}
+
+.boton1 {
+    display:grid;
+    place-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50; 
+    border: none;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 20.5%;
+    text-align: center;
+}
+
+.boton1:hover {
+    background-color: #45a049; 
+    color: #fff;
+}
+
+.boton2 {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #4CAF50; /* Verde */
+    background-color: #fff;
+    border: 2px solid #4CAF50; /* Verde */
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    width: 20%;
+    ;
+}
+
+.boton2:hover {
+    background-color: #4CAF50; 
+    color: #fff;
+}
+
+.botones-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.boton1, .boton2 {
+    text-align: center;
+    width: 155px;
+    
+    margin: auto;
+}
